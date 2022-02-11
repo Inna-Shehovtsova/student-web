@@ -8,12 +8,12 @@ DROP TABLE IF EXISTS roles;
 
 CREATE TABLE users (
     user_id bigserial primary key ,
-    username text,
+    username text NOT NULL UNIQUE,
     password text,
     first_name text,
     last_name text,
     created_at timestamp not null,
-    is_active boolean
+    is_active boolean DEFAULT false
 );
 
 CREATE TABLE roles(
@@ -29,7 +29,7 @@ CREATE TABLE users_roles(
 
 CREATE TABLE post (
     post_id bigserial PRIMARY KEY,
-    user_id bigint,
+    user_id bigint REFERENCES users (user_id),
     title varchar(100) NOT NULL,
     content text NOT NULL,
     dt_created timestamp NOT NULL,
