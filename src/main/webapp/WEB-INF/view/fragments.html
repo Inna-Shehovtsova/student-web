@@ -21,9 +21,9 @@
     <!-- Custom styles for this template -->
     <link th:href="@{/resources/css/blog-home.css}" rel="stylesheet">
 
-<!--    <script th:inline="javascript">-->
-<!--        var contextPath = [[${contextPath}]];-->
-<!--    </script>-->
+    <script th:inline="javascript">
+        var contextPath = [[${contextPath}]];
+    </script>
 
 </head>
 
@@ -35,20 +35,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-<!--                <li class="nav-item active">-->
-<!--                    <a class="nav-link" th:href="@{/}">Home-->
-<!--                        <span class="sr-only">(current)</span>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li sec:authorize="hasRole('USER')" class="nav-item">-->
-<!--                    <a class="nav-link" th:href="@{/post/new}">New Post</a>-->
-<!--                </li>-->
-<!--                <li sec:authorize="!isAuthenticated()" class="nav-item">-->
-<!--                    <a class="nav-link" th:href="@{/login}">Login</a>-->
-<!--                </li>-->
-<!--                <li sec:authorize="isAuthenticated()" class="nav-item">-->
-<!--                    <a class="nav-link" th:href="@{/logout}">Logout</a>-->
-<!--                </li>-->
+                <li sec:authorize="hasRole('USER')" class="nav-item">
+                    <a class="nav-link" th:href="@{/post/new}">New Post</a>
+                </li>
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/sign-in}">Sign in</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/sign-out}">Sign out</a>
+                </li>
             </ul>
         </div>
     </div>

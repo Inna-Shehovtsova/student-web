@@ -12,9 +12,8 @@ public class Post {
     @Column(name = "post_id")
     Long postId;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    User userId;
+
+
     String title;
 
     String content;
@@ -35,6 +34,19 @@ public class Post {
 
     @Column(name = "dt_updated")
     LocalDateTime dtUpdated;
+    
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Long getPostId() {
         return postId;

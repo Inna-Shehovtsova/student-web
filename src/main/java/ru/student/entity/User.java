@@ -1,8 +1,14 @@
 package ru.student.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="users")
@@ -15,7 +21,8 @@ import java.util.List;
     created_at timestamp not null,
     is_active boolean
 );*/
-public class User {
+public class User implements UserDetails {
+    public static final String ROLE = "ROLE_";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
@@ -32,13 +39,7 @@ public class User {
     @Column(name = "is_active")
     private boolean isActive;
 
-    public List<Post> getPostList() {
-        return postList;
-    }
 
-    public void setPostList(List<Post> postList) {
-        this.postList = postList;
-    }
 
     public List<Roles> getRolesList() {
         return rolesList;
@@ -48,7 +49,7 @@ public class User {
         this.rolesList = rolesList;
     }
 
-    @OneToMany(mappedBy = "userId")
+    @OneToMany(mappedBy = "user")
     List<Post> postList;
 
     @ManyToMany
@@ -59,6 +60,14 @@ public class User {
     )
     private List<Roles> rolesList;
 
+
+    public List<Post> getPostList() {
+        return postList;
+    }
+
+    public void setPostList(List<Post> postList) {
+        this.postList = postList;
+    }
     public Long getUserId() {
         return userId;
     }
@@ -71,8 +80,35 @@ public class User {
         return username;
     }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRolesList().stream()
+                .map(r -> new SimpleGrantedAuthority(ROLE + r.getRoleName()))
+                .collect(Collectors.toList());
     }
 
     public String getPassword() {
@@ -107,22 +143,12 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    public boolean isActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 
-    public void setActive(boolean active) {
+    public void setIsActive(boolean active) {
         isActive = active;
     }
-
-    /* public List<Roles> getRolesList() {
-        return rolesList;
-    }
-
-    public void setRolesList(List<Roles> rolesList) {
-        this.rolesList = rolesList;
-    }
-*/
-
 
 }

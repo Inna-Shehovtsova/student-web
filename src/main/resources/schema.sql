@@ -8,17 +8,17 @@ DROP TABLE IF EXISTS roles;
 
 CREATE TABLE users (
     user_id bigserial primary key ,
-    username text NOT NULL UNIQUE,
+    username VARCHAR(50) NOT NULL UNIQUE,
     password text,
     first_name text,
     last_name text,
     created_at timestamp not null,
-    is_active boolean DEFAULT false
+    is_active BOOLEAN DEFAULT false
 );
 
 CREATE TABLE roles(
     role_id bigserial primary key ,
-    role_name text
+    role_name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE users_roles(
@@ -38,7 +38,7 @@ CREATE TABLE post (
 
 CREATE TABLE tag (
     tag_id bigserial PRIMARY KEY,
-    name1 varchar(50) NOT NULL
+    name1 varchar(50)  NOT NULL UNIQUE
 );
 
 
@@ -61,6 +61,22 @@ CREATE TABLE comment (
 
 
 --Data
+insert into users (username, password, first_name, last_name, created_at, is_active)
+    values('admin', '$2a$10$r2Xwe2787auMUoE0T4Ahl.qm3XwMoN7zzzqrSnwdjtkBF/lZCSDuu', 'Angy','Angel', current_timestamp, false );
+insert into users (username, password, first_name, last_name, created_at, is_active)
+    values('user1', '$2a$10$73OfGwCsFBmXQYYazs08LufuJD4cNhftOT1jwzlmnQwQ5nXR6IoBi', 'Bob','Bee', current_timestamp, false );
+
+insert into roles( role_name )
+    values ('admin');
+insert into roles( role_name )
+    values ('user');
+
+ insert into users_roles(user_id,role_id)
+    values(1, 1);
+  insert into users_roles(user_id,role_id)
+    values(2, 2);
+
+
 
 insert into post (title, content, dt_created, dt_updated, user_id)
 	values ('Day 1', 'It''s all good!', current_timestamp - interval '2 days', null, 2);
@@ -99,20 +115,6 @@ insert into comment (post_id, content, dt_created)
 insert into comment (post_id, content, dt_created)
     values (3, 'Atrocious!', current_timestamp);
 
-insert into users (username, password, first_name, last_name, created_at, is_active)
-    values('test_user1', 'password1', 'Angy','Angel', current_timestamp, false );
-insert into users (username, password, first_name, last_name, created_at, is_active)
-    values('test_user2', 'password2', 'Bob','Bee', current_timestamp, false );
-
-insert into roles( role_name )
-    values ('admin');
-insert into roles( role_name )
-    values ('user');
-
- insert into users_roles(user_id,role_id)
-    values(1, 1);
-  insert into users_roles(user_id,role_id)
-    values(2, 2);
 
 
 select * from post;

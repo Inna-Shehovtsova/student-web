@@ -9,7 +9,7 @@
 
 </head>
 
-<!--<script type="text/javascript" th:src="@{/resources/js/delete-post.js}"></script>-->
+<script type="text/javascript" th:src="@{/resources/js/delete-post.js}"></script>
 
 <body>
 
@@ -29,7 +29,7 @@
 
             <h1 class="my-4">
                 <span th:text="${title}"></span>
-<!--                <small th:text="${subtitle}"></small>-->
+                <small th:text="${subtitle}"></small>
             </h1>
             <!-- Blog Posts -->
 
@@ -37,20 +37,19 @@
                 <div class="card-body">
                     <h2 class="card-title" th:text="${post.title}"></h2>
                     <p class="card-text" th:text="${post.content}"></p>
-<!--                    <a th:href="@{/post/{postId}(postId = ${post.postId})}" class="btn btn-primary">View</a>-->
-<!--                    <a  th:if="${#authentication.name == post.user.username}"-->
-<!--                        th:href="@{/post/{postId}/edit(postId = ${post.postId})}"-->
-<!--                        class="btn btn-secondary">Edit</a>-->
-<!--                    <a th:if="${#authentication.name == post.user.username or #authorization.expression('hasRole(''ADMIN'')')}"-->
-<!--                       th:onclick="'deletePost(\'' + ${post.postId} + '\');'"-->
-<!--                       class="btn btn-danger">Delete</a>-->
-
+                    <a th:href="@{/post/{postId}(postId = ${post.postId})}" class="btn btn-primary">View</a>
+                    <a  th:if="${#authentication.name == post.user.username}"
+                        th:href="@{/post/{postId}/edit(postId = ${post.postId})}"
+                        class="btn btn-secondary">Edit</a>
+                    <a th:if="${#authentication.name == post.user.username or #authorization.expression('hasRole(''ADMIN'')')}"
+                       th:onclick="'deletePost(\'' + ${post.postId} + '\');'"
+                       class="btn btn-danger">Delete</a>
                 </div>
                 <div class="card-footer text-muted">
-<!--                    Posted on <span-->
-<!--                        th:text="${#temporals.format(post.dtCreated, 'dd/MM/yyyy HH:mm')}"></span>-->
-<!--                    <a th:href="@{/user/{username}(username = ${post.user.username})}"-->
-<!--                       th:text="${post.user.username}"></a>-->
+                    Posted on <span
+                        th:text="${#temporals.format(post.dtCreated, 'dd/MM/yyyy HH:mm')}"></span>
+                    <a th:href="@{/user/{username}(username = ${post.user.username})}"
+                       th:text="${post.user.username}"></a>
 
                     <a></a>
                 </div>

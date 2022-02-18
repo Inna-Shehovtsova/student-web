@@ -39,7 +39,7 @@ public class UserRepositoryTest {
         users.setUsername("User3");
         users.setFirstName("Carrie");
         users.setLastName("Cat");
-        users.setActive(false);
+        users.setIsActive(false);
         users.setCreatedAt(LocalDateTime.now());
 
         usersRepository.save(users);

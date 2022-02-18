@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -81,8 +81,8 @@ public class PostRepositoryTest {
 
     @Test
     void findByTitle(){
-        Post post = postRepository.findByTitle("Day 1").get();
-        assertEquals("It's all good!", post.getContent());
+        //Post post = postRepository.findByTitle("Day 1").get();
+        //assertEquals("It's all good!", post.getContent());
     }
 
     @Test
@@ -115,7 +115,7 @@ public class PostRepositoryTest {
     @Test
     void findByContent(){
 
-        List<Post> posts = postRepository.findByContentContaining("good");
+        List<Post> posts = postRepository.findByContentContainingIgnoreCase("good", Sort.by("dtCreated").descending());
         Assertions.assertEquals("It''s all good!", posts.get(0).getContent());
     }
     //@Test

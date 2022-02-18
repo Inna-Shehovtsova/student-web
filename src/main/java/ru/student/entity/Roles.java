@@ -5,6 +5,9 @@ import java.util.List;
 
 @Entity
 public class Roles {
+    public static final String USER = "USER";
+    public static final String ADMIN = "ADMIN";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
