@@ -51,6 +51,7 @@ CREATE TABLE post_tag (
 CREATE TABLE comment (
     comment_id bigserial PRIMARY KEY,
     post_id bigint REFERENCES post(post_id) ON DELETE CASCADE,
+    user_id bigint REFERENCES users (user_id),
     content text,
     dt_created timestamp NOT NULL,
     dt_updated timestamp
@@ -65,11 +66,12 @@ insert into users (username, password, first_name, last_name, created_at, is_act
     values('admin', '$2a$10$r2Xwe2787auMUoE0T4Ahl.qm3XwMoN7zzzqrSnwdjtkBF/lZCSDuu', 'Angy','Angel', current_timestamp, false );
 insert into users (username, password, first_name, last_name, created_at, is_active)
     values('user1', '$2a$10$73OfGwCsFBmXQYYazs08LufuJD4cNhftOT1jwzlmnQwQ5nXR6IoBi', 'Bob','Bee', current_timestamp, false );
-
+--insert into role(name) values ('ADMIN');
+--insert into role(name) values ('USER');
 insert into roles( role_name )
-    values ('admin');
+    values ('ADMIN');
 insert into roles( role_name )
-    values ('user');
+    values ('USER');
 
  insert into users_roles(user_id,role_id)
     values(1, 1);

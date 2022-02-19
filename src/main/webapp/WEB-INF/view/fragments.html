@@ -96,6 +96,18 @@
         <div class="card my-4">
             <h5 class="card-header">Tags</h5>
             <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <ul class="list-unstyled mb-1">
+                            <li th:each="tag: ${tags}">
+                                <a
+                                   th:href="@{/}"
+                                   th:text="${tag.name}"></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

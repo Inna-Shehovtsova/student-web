@@ -23,6 +23,12 @@ public class Comment {
     @Column(name = "dt_updated")
     LocalDateTime dtUpdated;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
+
     public Long getCommentId() {
         return commentId;
     }
@@ -61,5 +67,13 @@ public class Comment {
 
     public void setDtUpdated(LocalDateTime dtUpdated) {
         this.dtUpdated = dtUpdated;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -74,6 +74,7 @@ public class PostService {
     public Post findById(Long postId) {
         Post post = postRepository.findById(postId).orElseThrow();
         post.getTags().size();
+        post.getComments().size();
         return post;
     }
 

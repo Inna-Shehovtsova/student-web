@@ -60,6 +60,8 @@ public class User implements UserDetails {
     )
     private List<Roles> rolesList;
 
+    @OneToMany(mappedBy = "user")
+    List<Comment> commentList;
 
     public List<Post> getPostList() {
         return postList;

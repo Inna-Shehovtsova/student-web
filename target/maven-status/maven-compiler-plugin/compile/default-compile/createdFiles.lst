@@ -15,6 +15,7 @@ ru\student\repository\TagRepository.class
 ru\student\entity\Tag.class
 ru\student\entity\Comment.class
 ru\student\config\WebConfig.class
+ru\student\repository\CommentRepository.class
 ru\student\util\SecurityUtils.class
 ru\student\service\TagService.class
 ru\student\controller\UserController.class
@@ -23,3 +24,4 @@ ru\student\controller\HelloController.class
 ru\student\config\SecurityWebAppInitializer.class
 ru\student\service\UserServiceImpl.class
 ru\student\repository\RolesRepository.class
+ru\student\controller\CommentController.class

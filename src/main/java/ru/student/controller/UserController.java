@@ -21,4 +21,5 @@ public class UserController {
         userService.create(username, password);
         return "redirect:/sign-in";
     }
+
 }

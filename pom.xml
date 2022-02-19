@@ -96,6 +96,8 @@
 
     <!--    Security -->
 
+    <!--    Security -->
+
     <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
     <dependency>
       <groupId>org.springframework.security</groupId>
@@ -164,7 +166,7 @@
         <plugin>
           <artifactId>maven-war-plugin</artifactId>
           <configuration>
-            <outputDirectory>C:\apache-tomcat-9.0.58-windows-x64\apache-tomcat-9.0.58\webapps</outputDirectory>
+            <outputDirectory>C:\Users\Student\IdeaProjects\apache-tomcat-9.0.58\webapps</outputDirectory>
           </configuration>
           <version>3.2.2</version>
         </plugin>

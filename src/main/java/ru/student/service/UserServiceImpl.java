@@ -60,6 +60,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username).orElseThrow();
         user.getRolesList().size();
-        return (UserDetails) user;
+        return  user;
     }
 }

@@ -28,7 +28,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="79ebed18-19d5-4eb1-9905-290afb4daecf">
-      <console name="Connection" type="STANDARD" schema="information_schema" session="Main" />
+      <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -71,7 +71,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="79ebed18-19d5-4eb1-9905-290afb4daecf" active="true" signed="false">
+      <connection id="79ebed18-19d5-4eb1-9905-290afb4daecf" active="true">
         <database>
           <name value="Connection" />
           <description value="" />
@@ -87,7 +87,7 @@
           <database value="postgres" />
           <type value="USER_PASSWORD" />
           <user value="postgres" />
-          <deprecated-pwd value="cG9zdGdyZXM=" />
+          <deprecated-pwd value="" />
         </database>
         <properties>
           <auto-commit value="true" />
