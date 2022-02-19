@@ -10,11 +10,13 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import ru.student.dto.PostDTO;
 import ru.student.entity.Post;
+import ru.student.entity.Tag;
 import ru.student.entity.User;
 import ru.student.repository.PostRepository;
 import ru.student.repository.TagRepository;
 import ru.student.repository.UserRepository;
 import ru.student.service.PostService;
+import ru.student.service.TagService;
 import ru.student.service.UserService;
 import ru.student.util.SecurityUtils;
 
@@ -29,19 +31,23 @@ public class PostController {
     private final PostService postService;
     private final ServletContext servletContext;
     private final TagRepository tagRepository;
+    private  final TagService tagService;
 
     @Autowired
     public PostController(PostRepository postRepository,
                           UserRepository userRepository,
                           UserService userService,
                           PostService postService,
-                          ServletContext servletContext, TagRepository tagRepository) {
+                          ServletContext servletContext,
+                          TagRepository tagRepository,
+                          TagService tagService) {
         this.postRepository = postRepository;
         this.userRepository = userRepository;
         this.userService = userService;
         this.postService = postService;
         this.servletContext = servletContext;
         this.tagRepository = tagRepository;
+        this.tagService = tagService;
     }
 
     @GetMapping
@@ -108,6 +114,15 @@ public class PostController {
         return "redirect:/post/" + postDto.getPostId();
     }
 
+    @GetMapping("/tag/{tagname}")
+    public String postByTag(@PathVariable String tagname, ModelMap model){
+        Tag t = tagService.getPostByTag(tagname);
+        model.put("posts", t.getPosts());
+        model.put("title", "Search by tag");
+        model.put("subtitle", tagname);
+        setCommonParams(model);
+        return "blog";
+    }
 //    @GetMapping("/post/{postId}")
 //    public String post(@PathVariable Long postId, ModelMap model){
 //        model.put("post", postService.findById(postId));
@@ -125,6 +140,7 @@ public class PostController {
     public String postView(@PathVariable Long postId, ModelMap model){
         Post post = postService.findById(postId);
         model.put("post", post);
+
         setCommonParams(model);
         return "post";
     }

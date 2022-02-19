@@ -101,7 +101,7 @@
                         <ul class="list-unstyled mb-1">
                             <li th:each="tag: ${tags}">
                                 <a
-                                   th:href="@{/}"
+                                   th:href="@{/tag/{tagname}(tagname=${tag.name})}"
                                    th:text="${tag.name}"></a>
                             </li>
                         </ul>
